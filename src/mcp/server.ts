@@ -63,6 +63,13 @@ server.tool(
     tags: z.array(z.string()).optional(),
   },
   async ({ title, content, category, tags }) => {
+    // Check for existing node with same title
+    const existing = await db.select().from(knowledgeNodes).where(eq(knowledgeNodes.title, title));
+    if (existing.length > 0) {
+      const node = existing[0];
+      return { content: [{ type: "text" as const, text: `Knowledge node already exists: [${node.id}] ${node.title}` }] };
+    }
+
     const id = randomUUID();
     const now = new Date();
     await db.insert(knowledgeNodes).values({

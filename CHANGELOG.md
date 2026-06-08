@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.0.2 - 2026-06-08
+
+### 改进
+
+- **知识图谱**：使用 Dagre 自动布局、按分类着色节点、自定义节点组件、边标签与动画、搜索过滤、图例
+- **知识节点去重**：创建节点时检查标题重复，MCP 和 Server Action 双重防护
+- **测试**：新增图谱页面组件测试，vitest 切换到 jsdom 环境支持 React 组件测试
+
+### 依赖
+
+- 新增 `@dagrejs/dagre`、`@testing-library/react`、`@testing-library/jest-dom`、`jsdom`
+
 ## 0.0.1 - 2026-06-08
 
 ### 新增

@@ -11,6 +11,11 @@ export async function createNode(data: {
   category?: string;
   tags?: string[];
 }) {
+  const existing = await db.select().from(knowledgeNodes).where(eq(knowledgeNodes.title, data.title));
+  if (existing.length > 0) {
+    return existing[0].id;
+  }
+
   const id = randomUUID();
   const now = new Date();
   await db.insert(knowledgeNodes).values({
