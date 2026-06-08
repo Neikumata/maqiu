@@ -21,3 +21,11 @@
 - 改代码前先解释要改什么、为什么改
 - 不要擅自加功能、加抽象、加注释，按需来
 - 代码风格跟着项目现有风格走
+
+## MCP 工具
+
+项目已配置 MCP server，可以直接通过工具操作知识库、学习系统和考试系统。可用工具：
+
+**知识库：** search_knowledge / get_knowledge / create_knowledge / update_knowledge / delete_knowledge / link_knowledge / unlink_knowledge
+**学习：** get_learning_status / update_learning_status / get_recommended / get_due_reviews
+**考试：** list_questions / create_question / create_exam / get_exam_stats
