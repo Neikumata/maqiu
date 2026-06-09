@@ -59,7 +59,7 @@ export async function updateProgress(
       score: data.score ?? 0,
       reviewCount: 0,
       lastReviewedAt: now,
-      nextReviewAt: calculateNextReview(data.status ?? "not_started", 0),
+      nextReviewAt: calculateNextReview(data.status ?? "not_started", 0, now),
       createdAt: now,
     });
   } else {
@@ -72,9 +72,13 @@ export async function updateProgress(
         score: data.score ?? existing.score,
         lastReviewedAt: now,
         reviewCount: newReviewCount,
+        // 使用 existing.reviewCount 来计算间隔（递增前的值）
+        // 第1次 mastered: reviewCount=0 -> 用 intervals[0]=1天
+        // 第2次 mastered: reviewCount=1 -> 用 intervals[1]=3天
         nextReviewAt: calculateNextReview(
           data.status ?? existing.status,
-          newReviewCount
+          existing.reviewCount,
+          now
         ),
       })
       .where(eq(learningProgress.nodeId, nodeId));
@@ -84,20 +88,18 @@ export async function updateProgress(
 
 function calculateNextReview(
   status: ProgressStatus,
-  reviewCount: number
+  reviewCount: number,
+  now: Date = new Date()
 ): Date | null {
   if (status === "mastered") {
     // 间隔复习：1天、3天、7天、14天、30天
     const intervals = [1, 3, 7, 14, 30];
     const days = intervals[Math.min(reviewCount, intervals.length - 1)];
-    const next = new Date();
-    next.setDate(next.getDate() + days);
-    return next;
+    // 使用时间戳计算，避免 setDate 的边界问题
+    return new Date(now.getTime() + days * 24 * 60 * 60 * 1000);
   }
   if (status === "needs_review") {
-    const next = new Date();
-    next.setDate(next.getDate() + 1);
-    return next;
+    return new Date(now.getTime() + 24 * 60 * 60 * 1000);
   }
   return null;
 }
