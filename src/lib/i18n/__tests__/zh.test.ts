@@ -37,16 +37,17 @@ describe("t() 函数", () => {
     expect(t("app.tagline")).toBe("知识库 · 学习系统 · 考试系统");
     expect(t("nav.knowledge")).toBe("知识库");
     expect(t("dashboard.title")).toBe("仪表盘");
-    expect(t("mcp.title")).toBe("MCP 服务管理");
+    expect(t("dashboard.nodes")).toBe("知识节点");
     expect(t("exam.questions.choice")).toBe("选择题");
   });
 
   // ----------------------------------------------------------
   // 2. 参数插值（单个参数）：替换模板中的占位符
   // ----------------------------------------------------------
-  it("支持单个参数插值，如 mcp.pid", () => {
-    expect(t("mcp.pid", { pid: 123 })).toBe("运行中 (PID: 123)");
-    expect(t("mcp.pid", { pid: 0 })).toBe("运行中 (PID: 0)");
+  it("支持参数插值，如 exam.detail.result", () => {
+    expect(t("exam.detail.result", { score: 80, max: 100 })).toBe(
+      "考试结果：80 / 100 分"
+    );
   });
 
   // ----------------------------------------------------------
@@ -68,10 +69,9 @@ describe("t() 函数", () => {
   it("不传 params 时，不改变原文", () => {
     // 选择一个没有占位符的 key
     expect(t("app.name")).toBe("麻球");
-    expect(t("mcp.running")).toBe("运行中");
+    expect(t("dashboard.title")).toBe("仪表盘");
     expect(t("nav.label")).toBe("导航");
     // 选择一个有占位符的 key 但不传参数，占位符应保持原样
-    expect(t("mcp.pid")).toBe("运行中 (PID: {pid})");
     expect(t("exam.detail.result")).toBe("考试结果：{score} / {max} 分");
   });
 
@@ -79,7 +79,7 @@ describe("t() 函数", () => {
   // 5. 参数值为字符串类型时也能正确替换
   // ----------------------------------------------------------
   it("参数值为字符串时也能正确替换", () => {
-    expect(t("mcp.pid", { pid: "abc" })).toBe("运行中 (PID: abc)");
+    expect(t("exam.detail.result", { score: "N/A", max: 100 })).toBe("考试结果：N/A / 100 分");
   });
 });
 
@@ -113,9 +113,9 @@ describe("DictKey 类型", () => {
     expect(keys).toContain("nav.knowledge");
     expect(keys).toContain("nav.learn");
     expect(keys).toContain("nav.exam");
-    expect(keys).toContain("nav.mcp");
     // Dashboard
     expect(keys).toContain("dashboard.title");
+    expect(keys).toContain("dashboard.nodes");
     // Knowledge
     expect(keys).toContain("knowledge.title");
     expect(keys).toContain("knowledge.graph.view");
@@ -126,9 +126,6 @@ describe("DictKey 类型", () => {
     // Exam
     expect(keys).toContain("exam.title");
     expect(keys).toContain("exam.create");
-    // MCP
-    expect(keys).toContain("mcp.title");
-    expect(keys).toContain("mcp.pid");
   });
 });
 

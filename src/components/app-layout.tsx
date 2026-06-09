@@ -16,14 +16,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { BookOpen, GraduationCap, ClipboardCheck, Server } from "lucide-react";
+import { BookOpen, GraduationCap, ClipboardCheck } from "lucide-react";
 import { t } from "@/lib/i18n/zh";
 
 const navItems = [
   { title: t("nav.knowledge"), href: "/knowledge", icon: BookOpen },
   { title: t("nav.learn"), href: "/learn", icon: GraduationCap },
   { title: t("nav.exam"), href: "/exam", icon: ClipboardCheck },
-  { title: t("nav.mcp"), href: "/mcp", icon: Server },
 ];
 
 export default function AppLayout({

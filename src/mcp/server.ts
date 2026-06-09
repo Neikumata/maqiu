@@ -11,7 +11,7 @@ import {
   questions,
   examResults,
   examAnswers,
-} from "@/lib/db/schema";
+} from "../lib/db/schema";
 
 const server = new McpServer({
   name: "maqiu",
@@ -88,6 +88,11 @@ server.tool(
     category: z.string().optional(), tags: z.array(z.string()).optional(),
   },
   async ({ id, title, content, category, tags }) => {
+    // 先检查节点是否存在
+    const existing = await db.select({ id: knowledgeNodes.id }).from(knowledgeNodes).where(eq(knowledgeNodes.id, id));
+    if (existing.length === 0) {
+      return { content: [{ type: "text" as const, text: `错误：未找到 ID 为 ${id} 的知识节点，请检查 ID 是否正确（需要完整 UUID）` }] };
+    }
     const data: Record<string, unknown> = { updatedAt: new Date() };
     if (title !== undefined) data.title = title;
     if (content !== undefined) data.content = content;

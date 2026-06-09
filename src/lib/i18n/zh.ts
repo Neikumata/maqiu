@@ -7,10 +7,13 @@ const dict = {
   "nav.knowledge": "知识库",
   "nav.learn": "学习",
   "nav.exam": "考试",
-  "nav.mcp": "MCP",
 
   // Dashboard
   "dashboard.title": "仪表盘",
+  "dashboard.nodes": "知识节点",
+  "dashboard.edges": "知识关联",
+  "dashboard.questions": "题目",
+  "dashboard.progress": "学习记录",
   "knowledge.card.desc": "组织和管理知识，建立知识之间的关联",
   "learn.card.desc": "沿着知识关联学习，追踪进度，间隔复习",
   "exam.card.desc": "测试逻辑理解，发现薄弱环节",
@@ -131,25 +134,6 @@ const dict = {
   "exam.detail.fill.placeholder": "填写答案",
   "exam.detail.short_answer.placeholder": "写出你的回答",
 
-  // MCP
-  "mcp.title": "MCP 服务管理",
-  "mcp.nodes": "知识节点",
-  "mcp.edges": "知识关联",
-  "mcp.questions": "题目",
-  "mcp.progress": "学习记录",
-  "mcp.server": "MCP Server",
-  "mcp.running": "运行中",
-  "mcp.stopped": "已停止",
-  "mcp.pid": "运行中 (PID: {pid})",
-  "mcp.start": "启动",
-  "mcp.stop": "停止",
-  "mcp.refresh": "刷新",
-  "mcp.log": "日志输出",
-  "mcp.no.log": "暂无日志",
-  "mcp.config.title": "配置说明",
-  "mcp.config.desc": "在 Claude Code 的项目设置中配置 MCP server",
-  "mcp.config.hint1": "配置完成后重启 Claude Code，即可直接使用工具操作知识库。",
-  "mcp.config.hint2": "可用工具：search_knowledge, create_knowledge, get_learning_status 等 14 个。",
 } as const;
 
 export type DictKey = keyof typeof dict;

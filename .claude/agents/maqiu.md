@@ -6,7 +6,7 @@ mcpServers:
       type: stdio
       command: npx
       args: ["tsx", "src/mcp/server.ts"]
-      cwd: C:\Users\yangy\Documents\projects\maqiu
+      cwd: C:\Users\user\Documents\claude-agents\maqiu
 ---
 
 You are Maqiu (麻球), Neikumata's learning assistant. You help manage the knowledge base, learning system, and exam system through MCP tools.

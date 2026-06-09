@@ -48,7 +48,7 @@
 
 | 用途 | 选择 |
 |------|------|
-| 框架 | Next.js 15 (App Router) |
+| 框架 | Next.js 16 (App Router) |
 | 语言 | TypeScript |
 | 数据库 | SQLite (libsql) |
 | ORM | Drizzle |

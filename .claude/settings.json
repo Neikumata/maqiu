@@ -1,1 +1,13 @@
-{}
+{
+  "mcpServers": {
+    "maqiu": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "tsx",
+        "C:\\Users\\user\\Documents\\claude-agents\\maqiu\\src\\mcp\\server.ts"
+      ],
+      "cwd": "C:\\Users\\user\\Documents\\claude-agents\\maqiu"
+    }
+  }
+}
