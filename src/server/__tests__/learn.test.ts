@@ -4,9 +4,12 @@ import { dirname, resolve } from "path";
 import { randomUUID } from "crypto";
 
 // 测试数据库文件路径（独立文件，避免与其他测试套件冲突）
-const TEST_DB_PATH = resolve(process.cwd(), "data", "test_learn.db");
+// 注意：不能在模块顶层用 const 定义，因为 vi.hoisted 回调会在 const 初始化前执行（TDZ）
+// 所以把路径定义放到 vi.hoisted 内部，或者用 var/函数来延迟求值
 
-// 清理残留的测试数据库
+// 清理残留的测试数据库（使用 var 避免 TDZ）
+var TEST_DB_PATH = resolve(process.cwd(), "data", "test_learn.db");
+
 if (existsSync(TEST_DB_PATH)) {
   try {
     unlinkSync(TEST_DB_PATH);
@@ -16,7 +19,7 @@ if (existsSync(TEST_DB_PATH)) {
 }
 
 // 确保目录存在
-const dir = dirname(TEST_DB_PATH);
+const dir = dirname(resolve(process.cwd(), "data", "test_learn.db"));
 if (!existsSync(dir)) {
   mkdirSync(dir, { recursive: true });
 }
@@ -26,10 +29,10 @@ if (!existsSync(dir)) {
 const { testDb, client } = vi.hoisted(() => {
   const { drizzle } = require("drizzle-orm/libsql");
   const { createClient } = require("@libsql/client");
-  // 使用相对路径，因为 vi.hoisted 中 require 不支持 @ 别名
-  const schema = require("../../lib/db/schema");
-  const cl = createClient({ url: `file:${TEST_DB_PATH}` });
-  return { testDb: drizzle(cl, { schema }), client: cl };
+  const { resolve } = require("path");
+  const dbPath = resolve(process.cwd(), "data", "test_learn.db");
+  const cl = createClient({ url: `file:${dbPath}` });
+  return { testDb: drizzle(cl), client: cl };
 });
 
 // 模拟 @/lib/db 模块，让 Server Actions 使用测试数据库
@@ -110,10 +113,11 @@ afterAll(async () => {
   // 测试结束后关闭连接并清理测试数据库文件
   client.close();
   await new Promise((r) => setTimeout(r, 200));
-  if (existsSync(TEST_DB_PATH)) {
+  const dbPath = resolve(process.cwd(), "data", "test_learn.db");
+  if (existsSync(dbPath)) {
     for (let i = 0; i < 5; i++) {
       try {
-        unlinkSync(TEST_DB_PATH);
+        unlinkSync(dbPath);
         break;
       } catch {
         await new Promise((r) => setTimeout(r, 300));
