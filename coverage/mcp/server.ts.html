@@ -1,0 +1,988 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for mcp/server.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">mcp</a> server.ts</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">13.6% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>20/147</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/86</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">3.33% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/30</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">16.12% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>20/124</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+import { eq, like, or, and, ne, lt } from "drizzle-orm";
+import { randomUUID } from "crypto";
+import { db } from "./db";
+import {
+  knowledgeNodes,
+  knowledgeEdges,
+  learningProgress,
+  questions,
+  examResults,
+  examAnswers,
+} from "@/lib/db/schema";
+&nbsp;
+const server = new McpServer({
+  name: "maqiu",
+  version: "0.0.1",
+});
+&nbsp;
+// ============ 知识库工具 ============
+&nbsp;
+server.tool("search_knowledge", "搜索知识节点", { query: z.string().optional() }, <span class="fstat-no" title="function not covered" >async ({</span> query }) =&gt; {
+  const nodes = <span class="cstat-no" title="statement not covered" >query</span>
+    ? await db.select().from(knowledgeNodes).where(or(like(knowledgeNodes.title, `%${query}%`), like(knowledgeNodes.category, `%${query}%`)))
+    : await db.select().from(knowledgeNodes);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (nodes.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >    return { content: [{ type: "text" as const, text: "没有找到知识节点" }] };</span>
+  }
+&nbsp;
+  const text = <span class="cstat-no" title="statement not covered" >nodes.<span class="fstat-no" title="function not covered" >map((n</span>) =&gt; <span class="cstat-no" title="statement not covered" >`[${n.id}] ${n.title}${n.category ? ` (${n.category})` : ""}`)</span>.join("\n");</span>
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `找到 ${nodes.length} 个知识节点：\n${text}` }] };</span>
+});
+&nbsp;
+server.tool("get_knowledge", "获取知识节点详情（含关联）", { id: z.string() }, <span class="fstat-no" title="function not covered" >async ({</span> id }) =&gt; {
+  const nodes = <span class="cstat-no" title="statement not covered" >await db.select().from(knowledgeNodes).where(eq(knowledgeNodes.id, id));</span>
+  const node = <span class="cstat-no" title="statement not covered" >nodes[0];</span>
+<span class="cstat-no" title="statement not covered" >  if (!node) <span class="cstat-no" title="statement not covered" >return { content: [{ type: "text" as const, text: "未找到该知识节点" }] };</span></span>
+&nbsp;
+  const outgoing = <span class="cstat-no" title="statement not covered" >await db.select().from(knowledgeEdges).where(eq(knowledgeEdges.sourceId, id));</span>
+  const incoming = <span class="cstat-no" title="statement not covered" >await db.select().from(knowledgeEdges).where(eq(knowledgeEdges.targetId, id));</span>
+&nbsp;
+  let text = <span class="cstat-no" title="statement not covered" >`# ${node.title}\n分类: ${node.category || "无"}\n标签: ${(node.tags as string[])?.join(", ") || "无"}\n更新: ${new Date(node.updatedAt).toLocaleDateString("zh-CN")}\n\n${(node.content as string) || "（无内容）"}`;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (incoming.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >    text += `\n\n## 前置知识\n` + incoming.<span class="fstat-no" title="function not covered" >map((e</span>) =&gt; <span class="cstat-no" title="statement not covered" >`- [${e.sourceId}] (${e.type})`)</span>.join("\n");</span>
+  }
+<span class="cstat-no" title="statement not covered" >  if (outgoing.length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >    text += `\n\n## 后续知识\n` + outgoing.<span class="fstat-no" title="function not covered" >map((e</span>) =&gt; <span class="cstat-no" title="statement not covered" >`- [${e.targetId}] (${e.type})`)</span>.join("\n");</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text }] };</span>
+});
+&nbsp;
+server.tool(
+  "create_knowledge",
+  "创建知识节点",
+  {
+    title: z.string(),
+    content: z.string().optional(),
+    category: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  },
+<span class="fstat-no" title="function not covered" >  async ({</span> title, content, category, tags }) =&gt; {
+    // Check for existing node with same title
+    const existing = <span class="cstat-no" title="statement not covered" >await db.select().from(knowledgeNodes).where(eq(knowledgeNodes.title, title));</span>
+<span class="cstat-no" title="statement not covered" >    if (existing.length &gt; 0) {</span>
+      const node = <span class="cstat-no" title="statement not covered" >existing[0];</span>
+<span class="cstat-no" title="statement not covered" >      return { content: [{ type: "text" as const, text: `Knowledge node already exists: [${node.id}] ${node.title}` }] };</span>
+    }
+&nbsp;
+    const id = <span class="cstat-no" title="statement not covered" >randomUUID();</span>
+    const now = <span class="cstat-no" title="statement not covered" >new Date();</span>
+<span class="cstat-no" title="statement not covered" >    await db.insert(knowledgeNodes).values({</span>
+      id, title, content: content ?? "", category: category ?? "",
+      tags: tags ?? [], createdAt: now, updatedAt: now,
+    });
+<span class="cstat-no" title="statement not covered" >    return { content: [{ type: "text" as const, text: `已创建知识节点：[${id}] ${title}` }] };</span>
+  }
+);
+&nbsp;
+server.tool(
+  "update_knowledge",
+  "更新知识节点",
+  {
+    id: z.string(), title: z.string().optional(), content: z.string().optional(),
+    category: z.string().optional(), tags: z.array(z.string()).optional(),
+  },
+<span class="fstat-no" title="function not covered" >  async ({</span> id, title, content, category, tags }) =&gt; {
+    const data: Record&lt;string, unknown&gt; = <span class="cstat-no" title="statement not covered" >{ updatedAt: new Date() };</span>
+<span class="cstat-no" title="statement not covered" >    if (title !== undefined) <span class="cstat-no" title="statement not covered" >data.title = title;</span></span>
+<span class="cstat-no" title="statement not covered" >    if (content !== undefined) <span class="cstat-no" title="statement not covered" >data.content = content;</span></span>
+<span class="cstat-no" title="statement not covered" >    if (category !== undefined) <span class="cstat-no" title="statement not covered" >data.category = category;</span></span>
+<span class="cstat-no" title="statement not covered" >    if (tags !== undefined) <span class="cstat-no" title="statement not covered" >data.tags = tags;</span></span>
+<span class="cstat-no" title="statement not covered" >    await db.update(knowledgeNodes).set(data).where(eq(knowledgeNodes.id, id));</span>
+<span class="cstat-no" title="statement not covered" >    return { content: [{ type: "text" as const, text: `已更新知识节点 ${id}` }] };</span>
+  }
+);
+&nbsp;
+server.tool("delete_knowledge", "删除知识节点（级联删除关联）", { id: z.string() }, <span class="fstat-no" title="function not covered" >async ({</span> id }) =&gt; {
+<span class="cstat-no" title="statement not covered" >  await db.delete(knowledgeNodes).where(eq(knowledgeNodes.id, id));</span>
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `已删除知识节点 ${id} 及其关联` }] };</span>
+});
+&nbsp;
+server.tool(
+  "link_knowledge",
+  "建立知识关联",
+  {
+    sourceId: z.string(), targetId: z.string(),
+    type: z.enum(["prerequisite", "related", "builds_upon"]),
+  },
+<span class="fstat-no" title="function not covered" >  async ({</span> sourceId, targetId, type }) =&gt; {
+    const id = <span class="cstat-no" title="statement not covered" >randomUUID();</span>
+<span class="cstat-no" title="statement not covered" >    await db.insert(knowledgeEdges).values({ id, sourceId, targetId, type });</span>
+    const labels: Record&lt;string, string&gt; = <span class="cstat-no" title="statement not covered" >{ prerequisite: "前置知识", related: "相关知识", builds_upon: "进阶知识" };</span>
+<span class="cstat-no" title="statement not covered" >    return { content: [{ type: "text" as const, text: `已创建关联：${sourceId} → ${targetId}（${labels[type]}）` }] };</span>
+  }
+);
+&nbsp;
+server.tool("unlink_knowledge", "删除知识关联", { edgeId: z.string() }, <span class="fstat-no" title="function not covered" >async ({</span> edgeId }) =&gt; {
+<span class="cstat-no" title="statement not covered" >  await db.delete(knowledgeEdges).where(eq(knowledgeEdges.id, edgeId));</span>
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `已删除关联 ${edgeId}` }] };</span>
+});
+&nbsp;
+// ============ 学习系统工具 ============
+&nbsp;
+server.tool("get_learning_status", "获取学习进度（不传 nodeId 返回全部）", { nodeId: z.string().optional() }, <span class="fstat-no" title="function not covered" >async ({</span> nodeId }) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if (nodeId) {</span>
+    const rows = <span class="cstat-no" title="statement not covered" >await db.select().from(learningProgress).where(eq(learningProgress.nodeId, nodeId));</span>
+<span class="cstat-no" title="statement not covered" >    if (rows.length === 0) <span class="cstat-no" title="statement not covered" >return { content: [{ type: "text" as const, text: "该节点暂无学习记录" }] };</span></span>
+    const p = <span class="cstat-no" title="statement not covered" >rows[0];</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      content: [{
+        type: "text" as const,
+        text: `状态: ${p.status}\n分数: ${p.score}\n复习次数: ${p.reviewCount}\n上次复习: ${p.lastReviewedAt ? new Date(p.lastReviewedAt).toLocaleDateString("zh-CN") : "无"}\n下次复习: ${p.nextReviewAt ? new Date(p.nextReviewAt).toLocaleDateString("zh-CN") : "无"}`,
+      }],
+    };
+  }
+&nbsp;
+  const all = <span class="cstat-no" title="statement not covered" >await db.select({</span>
+    progress: learningProgress,
+    node: knowledgeNodes,
+  }).from(learningProgress).innerJoin(knowledgeNodes, eq(learningProgress.nodeId, knowledgeNodes.id));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (all.length === 0) <span class="cstat-no" title="statement not covered" >return { content: [{ type: "text" as const, text: "暂无学习记录" }] };</span></span>
+&nbsp;
+  const text = <span class="cstat-no" title="statement not covered" >all.<span class="fstat-no" title="function not covered" >map(({</span> progress: p, node: n }) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    `- ${n.title}: ${p.status}${p.nextReviewAt ? ` (下次复习: ${new Date(p.nextReviewAt).toLocaleDateString("zh-CN")})` : ""}`</span>
+  ).join("\n");
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `学习进度：\n${text}` }] };</span>
+});
+&nbsp;
+server.tool(
+  "update_learning_status",
+  "更新学习状态",
+  { nodeId: z.string(), status: z.enum(["not_started", "learning", "mastered", "needs_review"]), score: z.number().optional() },
+<span class="fstat-no" title="function not covered" >  async ({</span> nodeId, status, score }) =&gt; {
+    const existing = <span class="cstat-no" title="statement not covered" >await db.select().from(learningProgress).where(eq(learningProgress.nodeId, nodeId));</span>
+    const now = <span class="cstat-no" title="statement not covered" >new Date();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (existing.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >      await db.insert(learningProgress).values({</span>
+        id: randomUUID(), nodeId, status, score: score ?? 0,
+        reviewCount: 0, createdAt: now,
+      });
+    } else {
+      const prev = <span class="cstat-no" title="statement not covered" >existing[0];</span>
+      const newReviewCount = <span class="cstat-no" title="statement not covered" >prev.reviewCount + (status === "mastered" ? 1 : 0);</span>
+      let nextReview: Date | null = <span class="cstat-no" title="statement not covered" >null;</span>
+<span class="cstat-no" title="statement not covered" >      if (status === "mastered") {</span>
+        const intervals = <span class="cstat-no" title="statement not covered" >[1, 3, 7, 14, 30];</span>
+        const days = <span class="cstat-no" title="statement not covered" >intervals[Math.min(newReviewCount, intervals.length - 1)];</span>
+<span class="cstat-no" title="statement not covered" >        nextReview = new Date(now.getTime() + days * 86400000);</span>
+      } else <span class="cstat-no" title="statement not covered" >if (status === "needs_review") {</span>
+<span class="cstat-no" title="statement not covered" >        nextReview = new Date(now.getTime() + 86400000);</span>
+      }
+<span class="cstat-no" title="statement not covered" >      await db.update(learningProgress).set({</span>
+        status, score: score ?? prev.score, lastReviewedAt: now,
+        reviewCount: newReviewCount, nextReviewAt: nextReview,
+      }).where(eq(learningProgress.nodeId, nodeId));
+    }
+&nbsp;
+    const labels: Record&lt;string, string&gt; = <span class="cstat-no" title="statement not covered" >{ not_started: "未开始", learning: "学习中", mastered: "已掌握", needs_review: "需复习" };</span>
+<span class="cstat-no" title="statement not covered" >    return { content: [{ type: "text" as const, text: `已更新学习状态：${labels[status]}` }] };</span>
+  }
+);
+&nbsp;
+server.tool("get_recommended", "获取推荐学习的知识节点（前置知识已掌握的）", {}, <span class="fstat-no" title="function not covered" >async () =&gt; {</span>
+  const allNodes = <span class="cstat-no" title="statement not covered" >await db.select().from(knowledgeNodes);</span>
+  const allProgress = <span class="cstat-no" title="statement not covered" >await db.select().from(learningProgress);</span>
+  const <span class="cstat-no" title="statement not covered" >prereqEdges = (await db.select().from(knowledgeEdges)).<span class="fstat-no" title="function not covered" >filter((e</span>) =&gt; <span class="cstat-no" title="statement not covered" >e.type === "prerequisite")</span>;</span>
+  const progressMap = <span class="cstat-no" title="statement not covered" >new Map(allProgress.<span class="fstat-no" title="function not covered" >map((p</span>) =&gt; <span class="cstat-no" title="statement not covered" >[p.nodeId, p.status])</span>);</span>
+&nbsp;
+  const recommended = <span class="cstat-no" title="statement not covered" >allNodes.<span class="fstat-no" title="function not covered" >filter((n</span>ode) =&gt; {</span>
+    const status = <span class="cstat-no" title="statement not covered" >progressMap.get(node.id);</span>
+<span class="cstat-no" title="statement not covered" >    if (status &amp;&amp; status !== "not_started") <span class="cstat-no" title="statement not covered" >return false;</span></span>
+    const prereqs = <span class="cstat-no" title="statement not covered" >prereqEdges.<span class="fstat-no" title="function not covered" >filter((e</span>) =&gt; <span class="cstat-no" title="statement not covered" >e.targetId === node.id)</span>.<span class="fstat-no" title="function not covered" >map((e</span>) =&gt; <span class="cstat-no" title="statement not covered" >e.sourceId)</span>;</span>
+<span class="cstat-no" title="statement not covered" >    return prereqs.<span class="fstat-no" title="function not covered" >every((p</span>Id) =&gt; <span class="cstat-no" title="statement not covered" >progressMap.get(pId) === "mastered")</span>;</span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (recommended.length === 0) <span class="cstat-no" title="statement not covered" >return { content: [{ type: "text" as const, text: "暂无推荐学习的节点" }] };</span></span>
+&nbsp;
+  const text = <span class="cstat-no" title="statement not covered" >recommended.<span class="fstat-no" title="function not covered" >map((n</span>) =&gt; <span class="cstat-no" title="statement not covered" >`- [${n.id}] ${n.title}`)</span>.join("\n");</span>
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `推荐学习：\n${text}` }] };</span>
+});
+&nbsp;
+server.tool("get_due_reviews", "获取待复习的知识", {}, <span class="fstat-no" title="function not covered" >async () =&gt; {</span>
+  const now = <span class="cstat-no" title="statement not covered" >new Date();</span>
+  const rows = <span class="cstat-no" title="statement not covered" >await db.select({</span>
+    progress: learningProgress, node: knowledgeNodes,
+  }).from(learningProgress).innerJoin(knowledgeNodes, eq(learningProgress.nodeId, knowledgeNodes.id))
+    .where(and(ne(learningProgress.status, "not_started"), lt(learningProgress.nextReviewAt, now)));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (rows.length === 0) <span class="cstat-no" title="statement not covered" >return { content: [{ type: "text" as const, text: "暂无待复习的知识" }] };</span></span>
+&nbsp;
+  const text = <span class="cstat-no" title="statement not covered" >rows.<span class="fstat-no" title="function not covered" >map(({</span> node: n, progress: p }) =&gt; <span class="cstat-no" title="statement not covered" >`- ${n.title} (状态: ${p.status}，上次复习: ${p.lastReviewedAt ? new Date(p.lastReviewedAt).toLocaleDateString("zh-CN") : "无"})`)</span>.join("\n");</span>
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `待复习（${rows.length} 个）：\n${text}` }] };</span>
+});
+&nbsp;
+// ============ 考试系统工具 ============
+&nbsp;
+server.tool("list_questions", "列出题目（可选按知识节点过滤）", { nodeId: z.string().optional() }, <span class="fstat-no" title="function not covered" >async ({</span> nodeId }) =&gt; {
+  const qs = <span class="cstat-no" title="statement not covered" >nodeId</span>
+    ? await db.select().from(questions).where(eq(questions.nodeId, nodeId))
+    : await db.select().from(questions);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (qs.length === 0) <span class="cstat-no" title="statement not covered" >return { content: [{ type: "text" as const, text: "暂无题目" }] };</span></span>
+&nbsp;
+  const typeLabels: Record&lt;string, string&gt; = <span class="cstat-no" title="statement not covered" >{ choice: "选择题", fill: "填空题", short_answer: "简答题" };</span>
+  const text = <span class="cstat-no" title="statement not covered" >qs.<span class="fstat-no" title="function not covered" >map((q</span>) =&gt; <span class="cstat-no" title="statement not covered" >`- [${q.id}] (${typeLabels[q.type]}/难度${q.difficulty}) ${q.content}`)</span>.join("\n");</span>
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `共 ${qs.length} 道题：\n${text}` }] };</span>
+});
+&nbsp;
+server.tool(
+  "create_question",
+  "创建题目",
+  {
+    nodeId: z.string(), type: z.enum(["choice", "fill", "short_answer"]),
+    content: z.string(), options: z.array(z.string()).optional(),
+    answer: z.string(), explanation: z.string().optional(), difficulty: z.number().optional(),
+  },
+<span class="fstat-no" title="function not covered" >  async ({</span> nodeId, type, content, options, answer, explanation, difficulty }) =&gt; {
+    const id = <span class="cstat-no" title="statement not covered" >randomUUID();</span>
+<span class="cstat-no" title="statement not covered" >    await db.insert(questions).values({</span>
+      id, nodeId, type, content, options: options ?? [], answer,
+      explanation: explanation ?? "", difficulty: difficulty ?? 1, createdAt: new Date(),
+    });
+    const typeLabels: Record&lt;string, string&gt; = <span class="cstat-no" title="statement not covered" >{ choice: "选择题", fill: "填空题", short_answer: "简答题" };</span>
+<span class="cstat-no" title="statement not covered" >    return { content: [{ type: "text" as const, text: `已创建${typeLabels[type]}：[${id}] ${content}` }] };</span>
+  }
+);
+&nbsp;
+server.tool(
+  "create_exam",
+  "Create an exam from selected questions",
+  {
+    title: z.string(),
+    questionIds: z.array(z.string()),
+  },
+<span class="fstat-no" title="function not covered" >  async ({</span> title, questionIds }) =&gt; {
+<span class="cstat-no" title="statement not covered" >    if (questionIds.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >      return { content: [{ type: "text" as const, text: "No questions selected" }] };</span>
+    }
+    const examId = <span class="cstat-no" title="statement not covered" >randomUUID();</span>
+    const maxScore = <span class="cstat-no" title="statement not covered" >questionIds.length * 10;</span>
+<span class="cstat-no" title="statement not covered" >    await db.insert(examResults).values({</span>
+      id: examId, title, totalScore: 0, maxScore, createdAt: new Date(),
+    });
+<span class="cstat-no" title="statement not covered" >    for (const qId of questionIds) {</span>
+<span class="cstat-no" title="statement not covered" >      await db.insert(examAnswers).values({</span>
+        id: randomUUID(), examId, questionId: qId, userAnswer: "", correct: false,
+      });
+    }
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      content: [{
+        type: "text" as const,
+        text: `Exam created: ${title} (${questionIds.length} questions, ${maxScore} max score)\nExam ID: ${examId}`,
+      }],
+    };
+  }
+);
+&nbsp;
+server.tool("get_exam_stats", "查看考试记录和成绩", {}, <span class="fstat-no" title="function not covered" >async () =&gt; {</span>
+  const exams = <span class="cstat-no" title="statement not covered" >await db.select().from(examResults);</span>
+<span class="cstat-no" title="statement not covered" >  if (exams.length === 0) <span class="cstat-no" title="statement not covered" >return { content: [{ type: "text" as const, text: "暂无考试记录" }] };</span></span>
+&nbsp;
+  const text = <span class="cstat-no" title="statement not covered" >exams.<span class="fstat-no" title="function not covered" >map((e</span>) =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    `- ${e.title}: ${e.totalScore ?? "未完成"}/${e.maxScore ?? 0} (${new Date(e.createdAt).toLocaleDateString("zh-CN")})`</span>
+  ).join("\n");
+<span class="cstat-no" title="statement not covered" >  return { content: [{ type: "text" as const, text: `考试记录（${exams.length} 次）：\n${text}` }] };</span>
+});
+&nbsp;
+// ============ 启动 ============
+&nbsp;
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+}
+&nbsp;
+main().catch(console.error);
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-06-09T02:06:23.583Z
+            </div>
+        <script src="../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
+    </body>
+</html>
+    
