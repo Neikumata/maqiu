@@ -10,6 +10,32 @@ const state = {
   output: [] as string[],
 };
 
+// 注册进程退出时的清理钩子
+// 当 Next.js 服务器关闭时，自动关闭 MCP 进程
+if (typeof process !== "undefined") {
+  const cleanup = () => {
+    if (state.process && !state.process.killed) {
+      try {
+        state.process.kill("SIGTERM");
+        console.log("[MCP] 进程已随服务器关闭而清理");
+      } catch (e) {
+        // 进程可能已经退出，忽略错误
+      }
+    }
+  };
+
+  // 监听多种退出信号
+  process.on("exit", cleanup);
+  process.on("SIGINT", () => {
+    cleanup();
+    process.exit(0);
+  });
+  process.on("SIGTERM", () => {
+    cleanup();
+    process.exit(0);
+  });
+}
+
 export async function getMcpStatus() {
   return {
     status: state.status,
