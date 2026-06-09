@@ -29,3 +29,10 @@ Thumbs.db
 
 # Database
 data/
+
+# Test coverage
+coverage/
+*.txt
+
+# Test database
+data/test_*.db
