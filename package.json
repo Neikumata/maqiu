@@ -1,6 +1,6 @@
 {
   "name": "maqiu",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "个人学习与成长项目。核心理念：**先人后 AI**。",
   "main": "index.js",
   "scripts": {
